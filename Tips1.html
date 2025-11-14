@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Teknik Pernapasan untuk Mengatasi Kecemasan</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #fefcf9;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding-top: 80px;
+    }
+
+    .navbar-custom {
+      background-color: #fefcf9;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 1rem 2rem;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #000 !important;
+      pointer-events: none;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background: transparent;
+      font-size: 26px;
+      color: #000;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+      outline: none;
+      z-index: 11;
+    }
+
+    .menu-container {
+      display: none;
+      justify-content: center;
+      background-color: #fefcf9;
+      border-top: 1px solid #e6e6e6;
+      padding: 15px 0;
+      animation: fadeIn 0.3s ease;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 9;
+    }
+
+    .menu-container.active {
+      display: flex;
+    }
+
+    .menu-container a {
+      color: #000;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .menu-container a:hover {
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: justify;
+    }
+
+    .content-container h2 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .content-container p {
+      color: #333;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      text-indent: 2em;
+    }
+
+    .content-container img {
+      display: block;
+      margin: 30px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .footer-custom {
+      background-color: #fefcf9;
+      color: #000;
+      padding: 40px 0 20px;
+      text-align: center;
+      border-top: 1px solid #e6e6e6;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .footer-left h5 {
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .footer-left p {
+      margin: 5px 0;
+    }
+
+    .footer-left a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-left a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right h6 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .footer-right a {
+      color: #000;
+      margin-right: 15px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .footer-right a:hover {
+      color: #555;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #e6e6e6;
+      margin-top: 25px;
+      padding-top: 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-right {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-custom">
+    <button class="navbar-toggler" id="toggleButton">&#9776;</button>
+    <a href="Home.html" class="navbar-brand mx-auto">MindEase</a>
+
+    <div class="menu-container" id="menuContainer">
+      <a href="Home.html">Home</a>
+      <a href="Kuesioner.html">Kuesioner</a>
+      <a href="Artikel.html">Artikel</a>
+      <a href="Tips.html">Tips</a>
+      <a href="About.html">About Us</a>
+    </div>
+  </nav>
+
+  <div class="content-container">
+    <h2>Teknik Pernapasan untuk Mengatasi Kecemasan</h2>
+    <img src="images/tip1.png" alt="Ilustrasi Pernapasan Tenang" width="100%">
+
+    <p>
+      Salah satu cara paling sederhana namun efektif untuk menghadapi kecemasan adalah melalui <b>teknik pernapasan dalam</b>. 
+      Saat kamu merasa cemas, tubuhmu secara alami bereaksi seolah sedang menghadapi ancaman nyata — detak jantung meningkat, napas menjadi cepat, 
+      otot terasa tegang, dan pikiran sulit dikendalikan. Dalam kondisi ini, kamu mungkin tidak menyadari bahwa napasmu menjadi pendek dan terburu-buru, 
+      yang justru memperparah rasa panik.
+    </p>
+
+    <p>
+      Teknik pernapasan membantu menenangkan sistem saraf dengan cara mengirim sinyal ke otak bahwa tubuhmu aman. 
+      Saat kamu menarik napas perlahan dan dalam, tubuh mulai mengaktifkan <i>respons relaksasi</i>, 
+      yaitu keadaan di mana detak jantung melambat, tekanan darah menurun, dan pikiran menjadi lebih jernih. 
+      Teknik ini sangat bermanfaat terutama bagi mereka yang sering mengalami kecemasan terhadap masa depan — 
+      kekhawatiran akan pekerjaan, pendidikan, hubungan, atau perubahan hidup yang belum pasti.
+    </p>
+
+    <p>
+      Berikut langkah sederhana yang bisa kamu coba:
+      <br><br>
+      1. Duduk atau berbaring dalam posisi yang nyaman.  
+      2. Letakkan satu tangan di dada dan satu tangan di perut.  
+      3. Tarik napas perlahan melalui hidung selama empat detik. Rasakan udara mengisi perutmu, bukan hanya dada.  
+      4. Tahan napas selama empat detik.  
+      5. Hembuskan perlahan melalui mulut selama enam detik, rasakan tubuhmu mulai rileks.  
+      6. Ulangi langkah ini selama 5–10 menit.
+    </p>
+
+    <p>
+      Saat kamu fokus pada napas, perhatianmu akan berpindah dari pikiran-pikiran negatif menuju kesadaran akan tubuhmu sendiri. 
+      Ini adalah inti dari <b>mindfulness breathing</b> — sebuah teknik untuk melatih diri agar tetap berada di “saat ini” 
+      dan tidak tenggelam dalam ketakutan akan masa depan. Semakin sering kamu melatihnya, semakin kuat kemampuanmu 
+      untuk mengendalikan respons emosional terhadap kecemasan.
+    </p>
+
+    <p>
+      Beberapa penelitian menunjukkan bahwa latihan pernapasan rutin dapat menurunkan kadar hormon stres kortisol, 
+      memperbaiki kualitas tidur, dan bahkan meningkatkan konsentrasi. 
+      Oleh karena itu, teknik ini bisa dijadikan kebiasaan kecil sehari-hari, 
+      seperti sebelum belajar, bekerja, atau tidur. 
+      Kamu bahkan bisa memadukannya dengan musik tenang, aroma terapi, atau doa pribadi untuk memperdalam efek relaksasi.
+    </p>
+
+    <p>
+      Ingatlah bahwa menghadapi kecemasan bukan berarti harus menghilangkannya sepenuhnya. 
+      Justru, dengan memahami dan menerima rasa cemas, kamu dapat mengubahnya menjadi sinyal untuk lebih mengenal dirimu. 
+      Tarikan napas yang pelan dan sadar bukan hanya menenangkan tubuh, tapi juga mengingatkanmu 
+      bahwa kendali selalu ada di dalam dirimu, bukan pada hal-hal yang belum terjadi.
+    </p>
+
+    <p><a href="Tips.html" style="font-weight:600; text-decoration:none; color:#000;">← Kembali ke Halaman Tips</a></p>
+  </div>
+
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h5>MindEase</h5>
+          <p>Moriah Hills, Indonesia</p>
+          <p>Email: <a href="mailto:info@mindease.com">info@mindease.com</a></p>
+          <p>Phone: +62 812 3456 7890</p>
+        </div>
+
+        <div class="footer-right">
+          <h6>Follow Us</h6>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 MindEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    const menuContainer = document.getElementById('menuContainer');
+    toggleButton.addEventListener('click', () => {
+      menuContainer.classList.toggle('active');
+      toggleButton.innerHTML = menuContainer.classList.contains('active') ? '&times;' : '&#9776;';
+    });
+  </script>
+</body>
+</html>

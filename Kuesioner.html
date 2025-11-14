@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Kuesioner Refleksi</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #fefcf9;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+    }
+
+    .navbar-custom {
+      background-color: #fefcf9;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 1rem 2rem;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #000 !important;
+      pointer-events: none;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background: transparent;
+      font-size: 26px;
+      color: #000;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+      outline: none;
+      z-index: 1001;
+    }
+
+    .menu-container {
+      display: none;
+      justify-content: center;
+      background-color: #fefcf9;
+      border-top: 1px solid #e6e6e6;
+      padding: 15px 0;
+      animation: fadeIn 0.3s ease;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .menu-container.active {
+      display: flex;
+    }
+
+    .menu-container a {
+      color: #000;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .menu-container a:hover {
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      max-width: 900px;
+      margin: 120px auto 80px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      font-weight: 700;
+      color: #333;
+    }
+
+    p.desc {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+
+    .options label {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background-color: #A7C7E7;
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #8bb8e0;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      background: #FFF8E9;
+      border-left: 5px solid #FFC288;
+      padding: 15px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .footer-custom {
+      background-color: #fefcf9;
+      color: #000;
+      padding: 40px 0 20px;
+      text-align: center;
+      border-top: 1px solid #e6e6e6;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .footer-left h5 {
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .footer-left p {
+      margin: 5px 0;
+    }
+
+    .footer-left a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-left a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right h6 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .footer-right a {
+      color: #000;
+      margin-right: 15px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .footer-right a:hover {
+      color: #555;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #e6e6e6;
+      margin-top: 25px;
+      padding-top: 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-right {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-custom">
+    <button class="navbar-toggler" id="toggleButton">&#9776;</button>
+    <a href="HOME.html" class="navbar-brand mx-auto">MindEase</a>
+    <div class="menu-container" id="menuContainer">
+      <a href="Home.html">Home</a>
+      <a href="Kuesioner.html">Kuesioner</a>
+      <a href="Artikel.html">Artikel</a>
+      <a href="Tips.html">Tips</a>
+      <a href="Tentang.html">About Us</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Kuesioner Refleksi</h1>
+    <p class="desc">Isi dengan jujur sesuai kondisi kamu akhir-akhir ini. Hasil akan muncul setelah kamu mengisi semuanya dan menekan tombol di bawah ini.</p>
+
+    <form id="formKuesioner">
+      <div id="questions"></div>
+      <button type="submit" class="btn-submit">Lihat Hasil</button>
+    </form>
+
+    <div id="resultBox" class="result-box"></div>
+  </main>
+
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h5>MindEase</h5>
+          <p>Moriah Hills, Indonesia</p>
+          <p>Email: <a href="mailto:info@mindease.com">info@mindease.com</a></p>
+          <p>Phone: +62 812 3456 7890</p>
+        </div>
+
+        <div class="footer-right">
+          <h6>Follow Us</h6>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 MindEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    const menuContainer = document.getElementById('menuContainer');
+    let isOpen = false;
+    toggleButton.addEventListener('click', () => {
+      menuContainer.classList.toggle('active');
+      isOpen = !isOpen;
+      toggleButton.innerHTML = isOpen ? '&times;' : '&#9776;';
+    });
+
+    const questions = [
+      "Saya sering merasa khawatir tentang apa yang akan terjadi di masa depan.",
+      "Saya merasa takut gagal dalam mencapai tujuan hidup saya.",
+      "Saya sulit merasa tenang ketika memikirkan kehidupan setelah lulus atau di masa depan.",
+      "Saya merasa terbebani oleh ekspektasi orang lain terhadap masa depan saya.",
+      "Saya sering membandingkan diri saya dengan orang lain dan merasa tertinggal.",
+      "Ketika memikirkan masa depan, saya merasa cemas dan kehilangan semangat.",
+      "Saya merasa tidak yakin dengan kemampuan saya untuk menghadapi tantangan hidup.",
+      "Pikiran tentang masa depan sering mengganggu fokus saya dalam beraktivitas sehari-hari.",
+      "Saya merasa takut tidak bisa mencapai kestabilan finansial atau karier di masa depan.",
+      "Saya merasa perlu mencari cara untuk menenangkan diri ketika mulai cemas memikirkan masa depan."
+    ];
+
+    const qContainer = document.getElementById("questions");
+    questions.forEach((q, i) => {
+      const qDiv = document.createElement("div");
+      qDiv.classList.add("question");
+      qDiv.innerHTML = `
+        <label><strong>${i + 1}.</strong> ${q}</label>
+        <div class="options mt-2">
+          ${[1, 2, 3, 4, 5].map(num => `
+            <label>
+              <input type="radio" name="q${i}" value="${num}"> ${num}
+            </label>
+          `).join("")}
+        </div>
+      `;
+      qContainer.appendChild(qDiv);
+    });
+
+    const form = document.getElementById("formKuesioner");
+    const resultBox = document.getElementById("resultBox");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const answers = [];
+      for (let i = 0; i < questions.length; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selected) {
+          alert("Mohon isi semua pertanyaan sebelum melihat hasil.");
+          return;
+        }
+        answers.push(parseInt(selected.value));
+      }
+
+      const total = answers.reduce((a, b) => a + b, 0);
+      let kategori, saran;
+
+      if (total <= 20) {
+        kategori = "Rendah";
+        saran = "Tingkat kecemasan kamu tergolong rendah.";
+      } else if (total <= 35) {
+        kategori = "Sedang";
+        saran = "Kecemasan kamu berada di tingkat sedang.";
+      } else {
+        kategori = "Tinggi";
+        saran = "Kamu mengalami tingkat kecemasan tinggi.";
+      }
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h5>Tingkat Kecemasan Kamu: <strong>${kategori}</strong></h5>
+        <p>Skor Total: <strong>${total}</strong> dari 50</p>
+        <p>${saran}</p>
+      `;
+      resultBox.scrollIntoView({behavior: "smooth"});
+    });
+  </script>
+
+</body>
+</html>

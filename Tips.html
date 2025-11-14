@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindEase | Tips</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #fefcf9;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding-top: 80px;
+    }
+
+    .navbar-custom {
+      background-color: #fefcf9;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 1rem 2rem;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #000 !important;
+      pointer-events: none;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background: transparent;
+      font-size: 26px;
+      color: #000;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+      outline: none;
+      z-index: 11;
+    }
+
+    .menu-container {
+      display: none;
+      justify-content: center;
+      background-color: #fefcf9;
+      border-top: 1px solid #e6e6e6;
+      padding: 15px 0;
+      animation: fadeIn 0.3s ease;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 9;
+    }
+
+    .menu-container.active {
+      display: flex;
+    }
+
+    .menu-container a {
+      color: #000;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .menu-container a:hover {
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tips-section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .tips-section h2 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: center; 
+      justify-content: flex-start;
+      margin-bottom: 40px;
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .tip-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .tip-item img {
+      width: 350px;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-right: 25px;
+      flex-shrink: 0;
+    }
+
+    .tip-text {
+      flex: 1;
+    }
+
+    .tip-text h4 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .tip-text p {
+      margin-bottom: 15px;
+    }
+
+    .tip-text a {
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid #000;
+      transition: 0.3s;
+    }
+
+    .tip-text a:hover {
+      color: #555;
+      border-color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .tip-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      .tip-item img {
+        margin: 0 0 20px 0;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .footer-custom {
+      background-color: #fefcf9;
+      color: #000;
+      padding: 40px 0 20px;
+      text-align: center;
+      border-top: 1px solid #e6e6e6;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .footer-left h5 {
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .footer-left p { margin: 5px 0; }
+
+    .footer-left a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+
+    .footer-left a:hover { text-decoration: underline; }
+
+    .footer-right h6 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .footer-right a {
+      color: #000;
+      margin-right: 15px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .footer-right a:hover { color: #555; }
+
+    .footer-bottom {
+      border-top: 1px solid #e6e6e6;
+      margin-top: 25px;
+      padding-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-custom">
+    <button class="navbar-toggler" id="toggleButton">&#9776;</button>
+    <a href="Home.html" class="navbar-brand mx-auto">MindEase</a>
+    <div class="menu-container" id="menuContainer">
+      <a href="Home.html">Home</a>
+      <a href="Kuesioner.html">Kuesioner</a>
+      <a href="Artikel.html">Artikel</a>
+      <a href="Tips.html">Tips</a>
+      <a href="About.html">About Us</a>
+    </div>
+  </nav>
+
+  <section class="tips-section">
+    <h2>Tips Menghadapi Kecemasan</h2>
+
+    <div class="tip-item">
+      <img src="images/tip1.png" alt="Tip 1">
+      <div class="tip-text">
+        <h4>1. Teknik Pernapasan untuk Mengatasi Kecemasan</h4>
+        <p>Tarik napas dalam-dalam melalui hidung, tahan selama beberapa detik, lalu hembuskan perlahan melalui mulut. Teknik sederhana ini dapat membantu menenangkan sistem saraf saat kecemasan muncul.</p>
+        <a href="Tips1.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <img src="images/tip2.png" alt="Tip 2">
+      <div class="tip-text">
+        <h4>2. Fokus pada Hal yang Bisa Kamu Kendalikan</h4>
+        <p>Kecemasan sering datang dari rasa takut terhadap hal yang belum terjadi. Fokuslah pada hal-hal yang bisa kamu kendalikan saat ini.</p>
+        <a href="Tips2.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <img src="images/tip3.png" alt="Tip 3">
+      <div class="tip-text">
+        <h4>3. Batasi Paparan Media Sosial</h4>
+        <p>Terlalu banyak membaca berita buruk bisa memperburuk kecemasan. Pilih sumber informasi yang terpercaya dan beri waktu istirahat dari media sosial.</p>
+        <a href="Tips3.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <img src="images/tip4.png" alt="Tip 4">
+      <div class="tip-text">
+        <h4>4. Bicarakan dengan Orang yang Kamu Percaya</h4>
+        <p>Berbicara tentang apa yang kamu rasakan dapat membantu meredakan tekanan. Dukungan emosional dari orang terdekat sangat berpengaruh bagi keseimbangan mental.</p>
+        <a href="Tips4.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <img src="images/tip5.png" alt="Tip 5">
+      <div class="tip-text">
+        <h4>5. Jaga Pola Hidup Sehat</h4>
+        <p>Kecemasan dapat berkurang dengan makan bergizi, olahraga rutin, dan tidur yang cukup. Tubuh yang sehat membantu pikiran lebih stabil.</p>
+        <a href="Tips5.html">Baca selengkapnya →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h5>MindEase</h5>
+          <p>Moriah Hills, Indonesia</p>
+          <p>Email: <a href="mailto:info@mindease.com">info@mindease.com</a></p>
+          <p>Phone: +62 812 3456 7890</p>
+        </div>
+
+        <div class="footer-right">
+          <h6>Follow Us</h6>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 MindEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    const menuContainer = document.getElementById('menuContainer');
+    toggleButton.addEventListener('click', () => {
+      menuContainer.classList.toggle('active');
+      toggleButton.innerHTML = menuContainer.classList.contains('active') ? '&times;' : '&#9776;';
+    });
+  </script>
+</body>
+</html>
